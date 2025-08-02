@@ -18,7 +18,7 @@ qiskit-aer = "^0.17.1"
 scikit-learn = "^1.7.1"
 pre-commit = "^4.2.0"
 notebook = "7.4.4"
-qiskit-ibm-runtime = "^0.36.1"
+qiskit-ibm-runtime = "^0.40.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.1"

@@ -1,7 +1,25 @@
 """Generate quantum circuits for testing purposes."""
 
-from qiskit import QuantumCircuit
 import random
+from qiskit import QuantumCircuit
+
+
+def fully_connected_graph_state(num_qubits: int) -> QuantumCircuit:
+    """Generates an n-qubit fully-connected graph state circuit..
+
+    Args:
+        num_qubits: The number of qubits in the circuit.
+
+    Returns:
+        The generated graph state circuit.
+    """
+    qc = QuantumCircuit(num_qubits)
+    for qubit in range(num_qubits):
+        qc.h(qubit)
+    for i in range(num_qubits):
+        for j in range(i + 1, num_qubits):
+            qc.cz(i, j)
+    return qc
 
 
 def generate_random_two_qubit_gate_circuit(num_qubits: int, depth: int) -> QuantumCircuit:
