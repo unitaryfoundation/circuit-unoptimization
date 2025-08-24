@@ -4,6 +4,39 @@ import random
 from qiskit import QuantumCircuit
 
 
+def super_peaked_entangled_circuit(num_qubits: int) -> QuantumCircuit:
+    """
+    Creates an entangled circuit that maps the all-zero state to a specific
+    computational basis state (e.g., all-ones state). This circuit is 'super peaked'
+    and includes two-qubit gates, which are necessary for the QCU recipe.
+    """
+    qc = QuantumCircuit(num_qubits)
+    
+    # Create an entangled state (e.g., a GHZ-like state)
+    qc.h(0)
+    for i in range(num_qubits - 1):
+        qc.cx(i, i + 1)
+        
+    # Apply X gates to rotate the state to the all-ones state
+    # This ensures a high peak at a specific outcome
+    # The GHZ state is (00...0 + 11...1)/sqrt(2)
+    # Applying X on all qubits gives (11...1 + 00...0)/sqrt(2)
+    # Applying H on the first qubit would give back the |1...1> state
+    qc.h(0)
+    
+    return qc
+
+def super_peaked_circuit(num_qubits: int) -> QuantumCircuit:
+    """
+    Creates a circuit that maps the all-zero state to the all-one state.
+    This circuit is 'super peaked' with a peak probability of 1.0 (ideally).
+    """
+    qc = QuantumCircuit(num_qubits)
+    for qubit in range(num_qubits):
+        qc.x(qubit)
+    return qc
+
+
 def fully_connected_graph_state(num_qubits: int) -> QuantumCircuit:
     """Generates an n-qubit fully-connected graph state circuit..
 

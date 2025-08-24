@@ -150,7 +150,7 @@ def plot_benchmark_avg_circuit_depths(
 
 def plot_quantum_volume(
     num_qubits: int,
-    unoptimization_strategy: str = "P_c",
+    unoptimization_strategy: str = "concatenated",
     unoptimization_rounds: int = 35,
     seed: int = 10,
     shots: int = 1_000_000,
@@ -246,7 +246,7 @@ def plot_quantum_volume(
 
 def plot_qaoa(
     num_qubits: int = 12,
-    unoptimization_strategy: str = "P_c",
+    unoptimization_strategy: str = "concatenated",
     unoptimization_rounds: int = 35,
     seed: int = 1,
     shots: int = 1_000_000,
@@ -346,9 +346,9 @@ def plot_qaoa(
         [0], [popt[2]], marker="+", color="gold", label="Zero Noise Quadratic Fit Intercept", zorder=10, alpha=1, s=60
     )
 
-    if unoptimization_strategy == "P_c":
+    if unoptimization_strategy == "concatenated":
         plt.title("Concatenated Strategy")
-    if unoptimization_strategy == "P_r":
+    if unoptimization_strategy == "random":
         plt.title("Random Strategy")
 
     plt.ylabel("Cut Value")
@@ -364,7 +364,7 @@ def plot_qaoa(
 
 
 if __name__ == "__main__":
-    unoptmization_strategy = "P_c"
+    unoptmization_strategy = "concatenated"
 
     num_qubits = 10
     plot_quantum_volume(num_qubits, unoptimization_strategy=unoptmization_strategy)

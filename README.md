@@ -17,7 +17,6 @@ Once you have `poetry` installed, run:
 
 ```sh
 poetry install
-poetry shell
 ```
 
 ## Example
@@ -134,7 +133,7 @@ q_3: ─────────────────────────
 To generate the plots used in the paper, they can be run and generated directly by:
 
 ```sh
-python unopt/plot.py
+poetry run python unopt/plot.py
 ```
 
 Note that generating these files from scratch can take several minutes. The progress of the computations used for the

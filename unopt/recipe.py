@@ -16,14 +16,18 @@ from qiskit.transpiler.passes import (
     UnrollCustomDefinitions,
 )
 
-
-def unoptimize_circuit(qc: QuantumCircuit, iterations: int = 1, strategy: str = "P_c") -> QuantumCircuit:
+def unoptimize_circuit(
+    qc: QuantumCircuit,
+    iterations: int = 1,
+    strategy: str = "concatenated",
+    decomposition_method: str = "default",
+) -> QuantumCircuit:
     """Apply the elementary recipe to a quantum circuit multiple times.
 
     Args:
         qc: The input quantum circuit.
         iterations: The number of times to apply the recipe.
-        strategy: The strategy used in gate insertion. Options are "P_c" or "P_r".
+        strategy: The strategy used in gate insertion. Options are "concatenated" or "random".
 
     Returns:
         new_qc: The quantum circuit after applying the recipe.
@@ -37,7 +41,7 @@ def unoptimize_circuit(qc: QuantumCircuit, iterations: int = 1, strategy: str = 
         new_qc = swap(new_qc, B1_info)
 
         # Step 3: Decomposition:
-        new_qc = decompose(new_qc)
+        new_qc = decompose(new_qc, method = decomposition_method)
 
         # Step 4: Synthesis:
         new_qc = synthesize(new_qc)
@@ -45,12 +49,12 @@ def unoptimize_circuit(qc: QuantumCircuit, iterations: int = 1, strategy: str = 
     return new_qc
 
 
-def insert(qc: QuantumCircuit, strategy: str = "P_c") -> QuantumCircuit:
+def insert(qc: QuantumCircuit, strategy: str = "concatenated") -> QuantumCircuit:
     """Insert a two-qubit gate A and its Hermitian conjugate A† between two gates B1 and B2.
 
     Args:
         qc: The input quantum circuit.
-        strategy: The strategy to select the pair of two-qubit gates. Options are "P_c" or "P_r".
+        strategy: The strategy to select the pair of two-qubit gates. Options are "concatenated" or "random".
 
     Returns:
         new_qc: The modified quantum circuit with A and A† inserted.
@@ -71,8 +75,8 @@ def insert(qc: QuantumCircuit, strategy: str = "P_c") -> QuantumCircuit:
     found_pair = False
     B1_idx = B1_qubits = B1_gate = shared_qubit = None
 
-    if strategy == "P_c":
-        # Strategy P_c: Find a pair of gates that share a common qubit
+    if strategy == "concatenated":
+        # Strategy concatenated: Find a pair of gates that share a common qubit
         for i in range(len(two_qubit_gates)):
             for j in range(i + 1, len(two_qubit_gates)):
                 qubits_i = set(two_qubit_gates[i]["qubits"])
@@ -90,8 +94,8 @@ def insert(qc: QuantumCircuit, strategy: str = "P_c") -> QuantumCircuit:
             if found_pair:
                 break
 
-    elif strategy == "P_r":
-        # Strategy P_r: Randomly select a two-qubit gate as B1
+    elif strategy == "random":
+        # Strategy random: Randomly select a two-qubit gate as B1
         if two_qubit_gates:
             gate_info = random.choice(two_qubit_gates)
             B1_idx = gate_info["index"]
@@ -100,7 +104,7 @@ def insert(qc: QuantumCircuit, strategy: str = "P_c") -> QuantumCircuit:
             shared_qubit = B1_qubits[0]  # Choose the first qubit as shared
             found_pair = True
     else:
-        raise ValueError(f"Unknown strategy '{strategy}'. Available strategies are 'P_c' and 'P_r'.")
+        raise ValueError(f"Unknown strategy '{strategy}'. Available strategies are 'concatenated' and 'random'.")
 
     if not found_pair or B1_idx is None or B1_qubits is None:
         warnings.warn("No suitable pair of two-qubit gates found. Skipping gate insertion.")

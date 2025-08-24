@@ -11,12 +11,12 @@ from unopt.recipe import decompose, unoptimize_circuit
 @pytest.mark.parametrize(
     "strategy,iterations,circuit_generator,decomposition_method",
     [
-        ("P_c", 1, lambda: generate_random_two_qubit_gate_circuit(4, 5), "default"),
-        ("P_c", 2, lambda: generate_random_two_qubit_gate_circuit(6, 10), "default"),
-        ("P_r", 1, lambda: generate_random_two_qubit_gate_circuit(4, 5), "kak"),
-        ("P_r", 2, lambda: generate_random_two_qubit_gate_circuit(6, 10), "kak"),
-        ("P_c", 1, lambda: generate_random_two_qubit_gate_circuit(4, 5), "basis"),
-        ("P_c", 2, lambda: generate_random_two_qubit_gate_circuit(6, 10), "basis"),
+        ("concatenated", 1, lambda: generate_random_two_qubit_gate_circuit(4, 5), "default"),
+        ("concatenated", 2, lambda: generate_random_two_qubit_gate_circuit(6, 10), "default"),
+        ("random", 1, lambda: generate_random_two_qubit_gate_circuit(4, 5), "kak"),
+        ("random", 2, lambda: generate_random_two_qubit_gate_circuit(6, 10), "kak"),
+        ("concatenated", 1, lambda: generate_random_two_qubit_gate_circuit(4, 5), "basis"),
+        ("concatenated", 2, lambda: generate_random_two_qubit_gate_circuit(6, 10), "basis"),
     ],
 )
 def test_unoptimize_circuit_unitary_equivalence(
