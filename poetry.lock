@@ -1841,14 +1841,14 @@ files = [
 
 [[package]]
 name = "mitiq"
-version = "0.46.0"
+version = "0.47.0"
 description = "Mitiq is an open source toolkit for implementing error mitigation techniques on most current intermediate-scale quantum computers."
 optional = false
 python-versions = "<3.13,>=3.10"
 groups = ["main"]
 files = [
-    {file = "mitiq-0.46.0-py3-none-any.whl", hash = "sha256:4e62d90a99af1de23b8f1b063bba2a8fe5d2b3f44367a23db69b36c08949b178"},
-    {file = "mitiq-0.46.0.tar.gz", hash = "sha256:8bfd3204e7b6127c4001cdb6553fd38b798033b755bcd95fb21e0d44730006f8"},
+    {file = "mitiq-0.47.0-py3-none-any.whl", hash = "sha256:868f1d2c6207289dc941a95fdb44d1f5b25c7ea71d63d9a1223aa2c749e7435b"},
+    {file = "mitiq-0.47.0.tar.gz", hash = "sha256:d298646e62c9185d8cf9b3571b86d19c0c65d6ec7283bf0dd92c8afdf66d6e99"},
 ]
 
 [package.dependencies]
@@ -4288,4 +4288,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.13"
-content-hash = "0af373dab92cd3e5482919f06962775564527241916e16f2f49181258bc11953"
+content-hash = "47d33ee2cc57d2e8d7a4673dcdbba051efeddb87102cc7b2b4df984b0a54dc28"
