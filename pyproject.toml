@@ -16,7 +16,7 @@ pylatexenc = "^2.10"
 ply = "^3.11"
 qiskit-aer = "^0.17.1"
 scikit-learn = "^1.7.1"
-pre-commit = "^4.2.0"
+pre-commit = "^4.4.0"
 notebook = "7.4.5"
 qiskit-ibm-runtime = "^0.43.1"
 
