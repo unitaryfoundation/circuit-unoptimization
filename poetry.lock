@@ -419,30 +419,30 @@ files = [
 
 [[package]]
 name = "cirq-core"
-version = "1.4.1"
+version = "1.6.1"
 description = "A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits."
 optional = false
-python-versions = ">=3.10.0"
+python-versions = ">=3.11.0"
 groups = ["main"]
 files = [
-    {file = "cirq_core-1.4.1-py3-none-any.whl", hash = "sha256:869db60413265c41a8206854c1d4ca9bad5fac9cfd7c6a10685b5a6d516defa0"},
+    {file = "cirq_core-1.6.1-py3-none-any.whl", hash = "sha256:fbc809d7c6a228762ad92bb7870dc16f55b76728fcc7ef4c7aaceb7e5c63e8e6"},
 ]
 
 [package.dependencies]
 attrs = ">=21.3.0"
 duet = ">=0.2.8"
-matplotlib = ">=3.0,<4.0"
-networkx = ">=2.4"
-numpy = ">=1.22,<2.0"
-pandas = "*"
-scipy = ">=1.0,<2.0"
+matplotlib = ">=3.8,<4.0"
+networkx = ">=3.4,<4.0"
+numpy = ">=1.26"
+pandas = ">=2.1,<3.0"
+scipy = ">=1.12,<2.0"
 sortedcontainers = ">=2.0,<3.0"
 sympy = "*"
-tqdm = "*"
-typing-extensions = ">=4.2"
+tqdm = ">=4.12"
+typing_extensions = ">=4.2"
 
 [package.extras]
-contrib = ["opt-einsum", "ply (>=3.6)", "pylatex (>=1.4,<2.0)", "quimb (>=1.7,<2.0)"]
+contrib = ["opt_einsum", "ply (>=3.6)", "pylatex (>=1.4,<2.0)", "quimb (>=1.8)"]
 
 [[package]]
 name = "colorama"
@@ -1840,27 +1840,27 @@ files = [
 
 [[package]]
 name = "mitiq"
-version = "0.47.0"
+version = "0.48.0"
 description = "Mitiq is an open source toolkit for implementing error mitigation techniques on most current intermediate-scale quantum computers."
 optional = false
-python-versions = "<3.13,>=3.10"
+python-versions = "<3.13,>=3.11"
 groups = ["main"]
 files = [
-    {file = "mitiq-0.47.0-py3-none-any.whl", hash = "sha256:868f1d2c6207289dc941a95fdb44d1f5b25c7ea71d63d9a1223aa2c749e7435b"},
-    {file = "mitiq-0.47.0.tar.gz", hash = "sha256:d298646e62c9185d8cf9b3571b86d19c0c65d6ec7283bf0dd92c8afdf66d6e99"},
+    {file = "mitiq-0.48.0-py3-none-any.whl", hash = "sha256:32ca7ac7ed5b73314b12536942614dbf3761801232d652e60925dddd3df65d74"},
+    {file = "mitiq-0.48.0.tar.gz", hash = "sha256:0acad0a86fcc94de493696ab8f543a5e41ed0879d86ba63f89a9e96c8ddf0ad6"},
 ]
 
 [package.dependencies]
-cirq-core = ">=1.4.0,<1.5.0"
+cirq-core = ">=1.6.0,<1.7.0"
 matplotlib = ">=3.8"
-numpy = ">=1.22.0,<2.0.0"
-scipy = ">=1.10.1,<=1.15.2"
+numpy = ">=1.25.2,<2.0.0"
+scipy = ">=1.10.1,<=1.16.2"
 tabulate = "*"
 
 [package.extras]
-braket = ["amazon-braket-sdk (>=1.91,<1.94)", "cirq-ionq (>=1.4.0,<1.5.0)"]
-pennylane = ["pennylane (>=0.36.0,<0.37.0)", "pennylane-qiskit (>=0.36.0,<0.37.0)"]
-pyquil = ["cirq-rigetti (>=1.4.0,<1.5.0)", "pyquil (>=4.11.0,<4.12.0)"]
+braket = ["amazon-braket-sdk (>=1.97,<1.104)", "cirq-ionq (>=1.6.0,<1.7.0)"]
+pennylane = ["autoray (>=0.7.0,<0.8.0)", "pennylane (>=0.36.0,<0.37.0)", "pennylane-qiskit (>=0.36.0,<0.37.0)"]
+pyquil = ["pyquil (>=4.17.0,<4.18.0)", "qbraid (>=0.10.0,<0.11.0)"]
 qibo = ["qibo (>=0.2.16,<0.3.0)"]
 qiskit = ["ply (==3.11)", "qiskit (>=1.4.2,<1.5.0)", "qiskit-aer (>=0.17.0,<0.18.0)", "qiskit-ibm-runtime (>=0.37.0,<0.38.0)"]
 
@@ -4287,4 +4287,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.13"
-content-hash = "6b84530412c1d22de3fae98f302f98ee7c0224511d64e5fe9f4fbc658a2f2bd8"
+content-hash = "01e08c63807f08827d383e50550a9b27e643504b8099ab6a037cf19bf0aabf70"
