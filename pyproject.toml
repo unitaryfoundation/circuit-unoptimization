@@ -22,7 +22,7 @@ qiskit-ibm-runtime = "^0.43.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.1"
-ruff = "^0.14.2"
+ruff = "^0.14.7"
 mypy = "^1.17.1"
 pytest-mypy-plugins = "^3.2.0"
 
