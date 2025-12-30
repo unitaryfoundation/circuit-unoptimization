@@ -1,30 +1,34 @@
-[tool.poetry]
+[project]
 name = "unopt"
 version = "0.1.0"
 description = ""
-authors = ["vprusso <vincentrusso1@gmail.com>"]
+authors = [
+    {name = "vprusso", email = "vincentrusso1@gmail.com"}
+]
 readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "qiskit>=2.2.3",
+    "numpy>=1.22,<2.0",
+    "mitiq>=0.48.1",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.8",
+    "pylatexenc>=2.10",
+    "ply>=3.11",
+    "qiskit-aer>=0.17.2",
+    "scikit-learn>=1.8.0",
+    "pre-commit>=4.5.1",
+    "notebook==7.5.1",
+    "qiskit-ibm-runtime>=0.44.0",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.12,<3.13"
-qiskit = "^2.2.2"
-numpy = ">=1.22,<2.0"
-mitiq = "^0.47.0"
-jupyter = "^1.1.1"
-matplotlib = "^3.10.8"
-pylatexenc = "^2.10"
-ply = "^3.11"
-qiskit-aer = "^0.17.1"
-scikit-learn = "^1.8.0"
-pre-commit = "^4.5.1"
-notebook = "7.5.1"
-qiskit-ibm-runtime = "^0.44.0"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.4.1"
-ruff = "^0.14.10"
-mypy = "^1.19.1"
-pytest-mypy-plugins = "^3.2.0"
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.1",
+    "ruff>=0.14.10",
+    "mypy>=1.19.1",
+    "pytest-mypy-plugins>=3.2.0",
+]
 
 [tool.ruff]
 line-length = 120
@@ -37,6 +41,13 @@ disallow_untyped_calls = true  # Disallow calling functions without type hints
 disallow_untyped_defs = true   # Disallow functions without type hints
 show_error_codes = true        # Show error codes in output
 
+[tool.pytest.ini_options]
+filterwarnings = [
+    # Ignore deprecation warning from qiskit-ibm-runtime internal plugin loading
+    # This will be fixed in future versions of the library
+    "ignore:.*IBMFractionalTranslationPlugin is deprecated.*:DeprecationWarning",
+]
+
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

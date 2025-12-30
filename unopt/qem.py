@@ -42,16 +42,21 @@ def execute(
     circuit_with_measurement = circuit.copy()
     circuit_with_measurement.measure_all()
 
-    # Transpile the circuit:
+    # If a noise model is provided, create a simulator with it; otherwise use the backend directly.
+    if noise_model is not None:
+        execution_backend = AerSimulator(noise_model=noise_model)
+    else:
+        execution_backend = backend
+
+    # Transpile the circuit for the execution backend:
     compiled_circuit = transpile(
         circuit_with_measurement,
-        backend,
-        basis_gates=noise_model.basis_gates if noise_model is not None else None,
+        execution_backend,
         optimization_level=0,
     )
 
     # Execute the circuit:
-    sampler = SamplerV2(backend)
+    sampler = SamplerV2(execution_backend)
     result = sampler.run([compiled_circuit], shots=shots).result()
     counts = result[0].data.meas.get_counts()
 
@@ -89,10 +94,10 @@ def execute_no_shot_noise(
     qc = qc.copy()
     qc.save_density_matrix()
 
-    basis_gates = None if noise_model is None else noise_model.basis_gates + ["save_density_matrix"]
-
+    # Create the density matrix simulator with the noise model.
+    # The backend already knows about the noise model's basis gates, so we don't need to pass them separately.
     backend = AerSimulator(method="density_matrix", noise_model=noise_model)
-    job = backend.run(qc, optimization_level=0, noise_model=noise_model, shots=1, basis_gates=basis_gates)
+    job = backend.run(qc, optimization_level=0, shots=1)
 
     rho = np.asarray(job.result().data()["density_matrix"])
     expectation_value = float(rho[0, 0].real)

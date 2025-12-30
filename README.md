@@ -11,13 +11,15 @@ method of noise-scaling for quantum error mitigation techniques like zero-noise 
 
 ## Installing
 
-You will require Python 3.12 and [`poetry`](https://python-poetry.org/).
+You will require Python 3.12 and [`uv`](https://docs.astral.sh/uv/).
 
-Once you have `poetry` installed, run:
+Once you have `uv` installed, run:
 
 ```sh
-poetry install
+uv sync --all-extras
 ```
+
+This will install all dependencies including development tools (pytest, ruff, mypy, etc.).
 
 ## Example
 
@@ -133,7 +135,7 @@ q_3: ─────────────────────────
 To generate the plots used in the paper, they can be run and generated directly by:
 
 ```sh
-poetry run python unopt/plot.py
+uv run python unopt/plot.py
 ```
 
 Note that generating these files from scratch can take several minutes. The progress of the computations used for the
@@ -144,7 +146,7 @@ plots are shown when the above is run.
 To run the tests:
 
 ```sh
-poetry run pytest
+uv run pytest
 ```
 
 ## Linting/Formatting
@@ -152,5 +154,5 @@ poetry run pytest
 To guarantee that both linter and formatter run before each commit, please install the pre-commit hook with:
 
 ```sh
-poetry run pre-commit install
+uv run pre-commit install
 ```
