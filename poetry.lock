@@ -3228,14 +3228,14 @@ scipy = ">=1.0"
 
 [[package]]
 name = "qiskit-ibm-runtime"
-version = "0.43.1"
+version = "0.44.0"
 description = "IBM Quantum client for Qiskit Runtime."
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "qiskit_ibm_runtime-0.43.1-py3-none-any.whl", hash = "sha256:7448bb808589686079c50b097c804bbac738ad6a7ba30f8939164dcc99b4f625"},
-    {file = "qiskit_ibm_runtime-0.43.1.tar.gz", hash = "sha256:73852ffd3e72562a13f19507f1c548473a4a0a1d7a18a1f365d79d754838d4fe"},
+    {file = "qiskit_ibm_runtime-0.44.0-py3-none-any.whl", hash = "sha256:da3e00f08dfcc74459fd9be63f7e66740266f677c7af520385e1715849c4a751"},
+    {file = "qiskit_ibm_runtime-0.44.0.tar.gz", hash = "sha256:802b24e7007212773098a605688a98bcad095e4f786dd968bdbd5b87fb2530f1"},
 ]
 
 [package.dependencies]
@@ -3245,12 +3245,12 @@ packaging = "*"
 pydantic = ">=2.5.0"
 python-dateutil = ">=2.8.0"
 qiskit = ">=1.4.1"
-requests = ">=2.19"
+requests = ">=2.19,<2.32.2 || >2.32.2"
 requests-ntlm = ">=1.1.0"
 urllib3 = ">=1.21.1"
 
 [package.extras]
-common = ["black (>=24.1,<25.0)", "coverage (>=6.3)", "jupyter", "matplotlib (>=2.1)", "mypy (==0.931)", "nbconvert (>=5.3.1)", "nbformat (>=4.4.0)", "nbqa (==1.5.3)", "pproxy (==2.7.8)", "pylatexenc", "pylint (==3.0.0)", "qiskit-aer (>=0.17.0)", "scikit-learn", "scipy (>=1.0)", "setuptools"]
+common = ["black (>=24.1,<25.0)", "coverage (>=6.3)", "jupyter", "matplotlib (>=2.1)", "mypy (==1.19.0)", "nbconvert (>=5.3.1)", "nbformat (>=4.4.0)", "nbqa (==1.5.3)", "pproxy (==2.7.8)", "pylatexenc", "pylint (==3.0.0)", "qiskit-aer (>=0.17.0)", "scikit-learn", "scipy (>=1.0)", "setuptools"]
 dev = ["qiskit-ibm-runtime[common]", "qiskit-ibm-runtime[documentation]", "qiskit-ibm-runtime[test]", "qiskit-ibm-runtime[visualization]"]
 documentation = ["Sphinx (>=6)", "jupyter-sphinx", "nbsphinx", "packaging", "sphinx-autodoc-typehints (<=1.19.2)", "sphinx-automodapi", "sphinxcontrib-katex (==0.9.9)"]
 test = ["ddt (>=1.2.0,!=1.4.0,!=1.4.3)"]
@@ -4287,4 +4287,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.13"
-content-hash = "6b84530412c1d22de3fae98f302f98ee7c0224511d64e5fe9f4fbc658a2f2bd8"
+content-hash = "5a5d36fdf6e857bd316b929b032aeaf616c9763909f38aa5ecf5f2562340ea80"
