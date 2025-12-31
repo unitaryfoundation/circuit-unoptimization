@@ -37,11 +37,16 @@ def unoptimize_circuit(
         # Step 1: Gate Insertion:
         new_qc, B1_info = insert(new_qc, strategy)
 
+        # If insertion failed (no suitable gates found), skip this iteration
+        if B1_info is None:
+            warnings.warn("Skipping unoptimization iteration due to failed gate insertion.")
+            continue
+
         # Step 2: Gate Swapping:
         new_qc = swap(new_qc, B1_info)
 
         # Step 3: Decomposition:
-        new_qc = decompose(new_qc, method = decomposition_method)
+        new_qc = decompose(new_qc, method=decomposition_method)
 
         # Step 4: Synthesis:
         new_qc = synthesize(new_qc)
