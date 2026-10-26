@@ -16,7 +16,7 @@ dependencies = [
     "pylatexenc>=2.10",
     "ply>=3.11",
     "qiskit-aer>=0.17.2",
-    "scikit-learn>=1.8.0",
+    "scikit-learn>=1.9.1",
     "pre-commit>=4.5.1",
     "notebook==7.5.5",
     "qiskit-ibm-runtime>=0.44.0",
