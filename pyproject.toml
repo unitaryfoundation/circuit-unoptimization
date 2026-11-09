@@ -10,7 +10,7 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "qiskit>=2.2.3",
     "numpy>=2.5.4,<3.0",
-    "mitiq>=0.48.1",
+    "mitiq>=1.1.0",
     "jupyter>=1.1.1",
     "matplotlib>=3.11.2",
     "pylatexenc>=2.11",
