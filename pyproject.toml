@@ -15,7 +15,7 @@ dependencies = [
     "matplotlib>=3.11.2",
     "pylatexenc>=2.11",
     "ply>=3.11",
-    "qiskit-aer>=0.18.0",
+    "qiskit-aer>=0.18.2",
     "scikit-learn>=1.9.1",
     "pre-commit>=4.5.1",
     "notebook==7.6.4",
